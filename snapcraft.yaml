@@ -1,7 +1,11 @@
 name: celestia-daily # you probably want to 'snapcraft register <name>'
 base: core18 # the base snap is the execution environment for this snap
 version: '0.+git' # just for humans, typically '1.2+git' or '1.3.2'
-adopt-info: celestia
+
+summary: Free, open source, Real-time 3D visualization of space. # 79 char long summary
+description: |
+  Celestia is a real-time space simulation which lets you experience the universe in three dimensions. Celestia does not confine you to the surface of the Earth, it allows you to travel throughout the solar system, to any of over 100,000 stars, or even beyond the galaxy. Travel in Celestia is seamless; the exponential zoom feature lets you explore space across a huge range of scales, from galaxy clusters down to spacecraft only a few meters across. A 'point-and-goto' interface makes it simple to navigate through the universe to the object you want to visit.
+
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 
@@ -12,8 +16,7 @@ architectures: #build Architectures
    
 apps:
   celestia:
-    command: desktop-launch $SNAP/usr/bin/celestia
-    #common-id: 
+    command: desktop-launch $SNAP/usr/bin/celestia-qt
     plugs: [desktop, wayland, x11, unity7, gsettings, opengl, network, network-bind, audio-playback, home, raw-usb]
     
 parts:
@@ -28,7 +31,7 @@ parts:
     
     organize:
       snap/celestia-daily/current/usr: usr
-    parse-info: [usr/share/metainfo/celestia.appdata.xml] #appstream info
+
     after : [desktop-celestia]
     
     build-packages:
