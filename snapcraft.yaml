@@ -34,6 +34,13 @@ parts:
 
     after : [desktop-celestia]
     
+    override-build: |
+      snapcraftctl build
+      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/applications
+      cp ../src/debian/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications
+      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
+      cp ../src/src/celestia/qt/data/celestia.png $SNAPCRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
+    
     build-packages:
       - build-essential
       - doxygen
@@ -51,7 +58,13 @@ parts:
       - libqt5opengl5-dev
       - liblua5.3-dev
       
-    #stage-packages:
+    stage-packages:
+      - libepoxy0
+      - libglu1-mesa
+      - liblua5.3-0
+      - libogg0
+      - libqt5opengl5
+      - libtheora0
       
       
   desktop-celestia:
