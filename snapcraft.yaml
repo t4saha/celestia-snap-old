@@ -64,7 +64,6 @@ parts:
       - libogg0
       - libqt5opengl5
       - libtheora0
-      - libcanberra-gtk3-module
       - libcanberra-gtk-module
       
       
