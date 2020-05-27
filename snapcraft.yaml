@@ -24,13 +24,11 @@ parts:
     plugin: cmake
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
-      - -DCMAKE_INSTALL_PREFIX:PATH=/usr
+
     source: https://github.com/CelestiaProject/Celestia.git
     source-type: git
     source-depth : 1
     
-    organize:
-      snap/celestia-daily/current/usr: usr
 
     after : [desktop-celestia]
     
@@ -38,6 +36,7 @@ parts:
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/applications
       cp ../src/debian/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications
+      mv $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestial.desktop
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
       cp ../src/src/celestia/qt/data/celestia.png $SNAPCRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
     
@@ -65,6 +64,7 @@ parts:
       - libogg0
       - libqt5opengl5
       - libtheora0
+      - libcanberra-gtk3-module
       
       
   desktop-celestia:
