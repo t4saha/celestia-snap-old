@@ -65,6 +65,7 @@ parts:
       - libqt5opengl5
       - libtheora0
       - libcanberra-gtk3-module
+      - libcanberra-gtk-module
       
       
   desktop-celestia:
