@@ -16,7 +16,7 @@ architectures: #build Architectures
    
 apps:
   celestia:
-    command: desktop-launch $SNAP/usr/bin/celestia-qt
+    command: desktop-launch $SNAP/bin/celestia-qt
     plugs: [desktop, wayland, x11, unity7, gsettings, opengl, network, network-bind, audio-playback, home, raw-usb]
     
 parts:
