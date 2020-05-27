@@ -17,6 +17,7 @@ architectures: #build Architectures
 apps:
   celestia:
     command: desktop-launch $SNAP/bin/celestia-qt
+    desktop: $SNAP/usr/share/applications/celestia.desktop
     plugs: [desktop, wayland, x11, unity7, gsettings, opengl, network, network-bind, audio-playback, home, raw-usb]
     
 parts:
@@ -36,7 +37,7 @@ parts:
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/applications
       cp ../src/debian/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications
-      mv $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestial.desktop
+      mv $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestia.desktop
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
       cp ../src/src/celestia/qt/data/celestia.png $SNAPCRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
     
