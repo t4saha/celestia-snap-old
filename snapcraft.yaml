@@ -25,6 +25,7 @@ parts:
     plugin: cmake
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
+      - -DWITH_GTK_2_X = ON
 
     source: https://github.com/CelestiaProject/Celestia.git
     source-type: git
