@@ -17,7 +17,7 @@ architectures: #build Architectures
 apps:
   celestia:
     command: desktop-launch $SNAP/usr/bin/celestia-qt
-    #desktop: $SNAP/usr/share/applications/celestia.desktop
+    desktop: $SNAP/usr/share/applications/celestia.desktop
     plugs: [desktop, wayland, x11, unity7, gsettings, opengl, network, network-bind, audio-playback, home, raw-usb]
     
 layout:
@@ -31,7 +31,7 @@ parts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_PREFIX:PATH=/usr
       #- -DWITH_GTK_2_X = ON
-      - -DENABLE_TTF = ON
+      - -DENABLE_TTF=ON
 
     source: https://github.com/CelestiaProject/Celestia.git
     source-type: git
@@ -61,6 +61,7 @@ parts:
       - qtbase5-dev-tools 
       - libqt5opengl5-dev
       - liblua5.3-dev
+      - libfreetype6-dev
       
     stage-packages:
       - libepoxy0
