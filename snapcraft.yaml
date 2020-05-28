@@ -15,7 +15,7 @@ architectures: #build Architectures
    - build-on: arm64
    
 apps:
-  celestia:
+  celestia-qt:
     command: desktop-launch $SNAP/usr/bin/celestia-qt
     #desktop: $SNAP/usr/share/applications/celestia.desktop
     plugs: [desktop, wayland, x11, unity7, gsettings, opengl, network, network-bind, audio-playback, home, raw-usb]
@@ -25,7 +25,7 @@ layout:
     bind: $SNAP/usr/share/celestia
     
 parts:
-  celestia:
+  celestia-qt:
     plugin: cmake
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
