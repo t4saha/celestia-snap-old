@@ -23,8 +23,8 @@ apps:
 layout:
   /usr/share/celestia:
     bind: $SNAP/usr/share/celestia
-  /usr/lib:
-    bind: $SNAP/usr/lib
+  #/usr/lib:
+    #bind: $SNAP/usr/lib
     
 parts:
   celestia-qt:
