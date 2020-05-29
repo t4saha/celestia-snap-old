@@ -44,9 +44,9 @@ parts:
     
     override-build: |
       snapcraftctl build
-      mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/applications
-      cp ../src/debian/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications
-      mv $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestia.desktop
+      #mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/applications
+      #cp ../src/debian/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications
+      #mv $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestia-qt.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications/celestia.desktop
       mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
       cp ../src/src/celestia/qt/data/celestia.png $SNAPCRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
     
