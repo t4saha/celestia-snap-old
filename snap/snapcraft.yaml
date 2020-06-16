@@ -58,7 +58,7 @@ parts:
         #git checkout "${last_committed_tag}"
       #fi
       
-      snapcraftctl set-version "$(git describe)"
+      snapcraftctl set-version "$(git describe --tags)"
     
     override-build: |
       snapcraftctl build
