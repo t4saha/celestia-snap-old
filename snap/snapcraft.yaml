@@ -58,8 +58,7 @@ parts:
         #git checkout "${last_committed_tag}"
       #fi
       
-      snapcraftctl set-version "$(git describe --tags | awk '{ gsub("_","-"); print $1 }'
-)"
+      snapcraftctl set-version "$(git describe --tags | awk '{ gsub("_","-"); print $1 }')"
     
     override-build: |
       snapcraftctl build
