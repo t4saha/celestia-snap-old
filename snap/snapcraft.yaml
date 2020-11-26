@@ -39,6 +39,7 @@ parts:
     source: https://github.com/CelestiaProject/Celestia.git
     source-type: git
     #source-depth : 1
+    source-tag: 1.6.2
     
 
     after : [desktop-celestia]
