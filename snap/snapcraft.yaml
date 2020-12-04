@@ -98,7 +98,7 @@ parts:
 
   wrapper:
     plugin: dump
-    source: .
+    source: ./wrapper
     organize:
       run-celestia-qt.sh: bin/run-celestia-qt.sh
       
