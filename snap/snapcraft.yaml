@@ -99,7 +99,7 @@ parts:
   wrapper:
     plugin: dump
     after : [celestia-qt]
-    source: ./local
+    source: ./snap/local
     source-type: local
     organize:
       run-celestia-qt.sh: bin/run-celestia-qt.sh
