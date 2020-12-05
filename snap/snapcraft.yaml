@@ -99,6 +99,9 @@ parts:
   wrapper:
     plugin: dump
     after : [celestia-qt]
+    override-pull: |
+      snapcraftctl pull
+      chmod +x $SNAPCRAFT_PART_SRC/run-celestia-qt.sh
     source: ./snap/local
     source-type: local
     organize:
