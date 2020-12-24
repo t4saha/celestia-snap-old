@@ -1,5 +1,5 @@
 <p align="center">
-  <img width=100% src="https://raw.githubusercontent.com/t4saha/celestia-snap/master/snap/celestia-banner.png">
+  <img width=100% src="https://github.com/t4saha/celestia-snap/blob/master/snap/local/celestia-banner.png">
 </p>
 
 
