@@ -55,7 +55,7 @@ parts:
       if [ "${last_committed_tag}" != "${last_released_tag}" ]; then
         git fetch
         git checkout "${last_committed_tag}"
-        snapcraftctl set-version "${last_committed_tag} | awk '{ gsub("refs/tags/","v"); print $0 }'"
+        snapcraftctl set-version "${last_committed_tag} | awk '{ gsub("refs/tags/","v"); print $1 }'"
       fi    
     
     override-build: |
