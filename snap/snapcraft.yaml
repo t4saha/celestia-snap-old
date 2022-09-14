@@ -46,7 +46,6 @@ parts:
     
     override-pull: |  
       #snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags | awk '{ gsub("_","."); print $1 }')"
       #Checkout that latest stable version
       last_committed_tag="$(git ls-remote --tags https://github.com/CelestiaProject/Celestia.git | awk ' !/v/ { print $2 }' | awk ' !/release/ { print $1 }' | sort -V | tail -n 1)"
       tag_version="$(git ls-remote --tags https://github.com/CelestiaProject/Celestia.git | awk ' !/v/ { print $2 }' | awk ' !/release/ { print $1 }' | sort -V | tail -n 1 |  awk '{ gsub("refs/tags/","v"); print $1 }')"
@@ -58,6 +57,7 @@ parts:
         snapcraftctl set-version "${tag_version}"
       else
         craftctl default
+        snapcraftctl set-version "$(git describe --tags | awk '{ gsub("_","."); print $1 }')"
       fi
 
     override-build: |
