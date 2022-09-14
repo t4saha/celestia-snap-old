@@ -45,19 +45,21 @@ parts:
     after : [desktop-celestia]
     
     override-pull: |  
-      snapcraftctl pull
+      #snapcraftctl pull
       snapcraftctl set-version "$(git describe --tags | awk '{ gsub("_","."); print $1 }')"
       #Checkout that latest stable version
       last_committed_tag="$(git ls-remote --tags https://github.com/CelestiaProject/Celestia.git | awk ' !/v/ { print $2 }' | awk ' !/release/ { print $1 }' | sort -V | tail -n 1)"
+      tag_version="$(git ls-remote --tags https://github.com/CelestiaProject/Celestia.git | awk ' !/v/ { print $2 }' | awk ' !/release/ { print $1 }' | sort -V | tail -n 1 |  awk '{ gsub("refs/tags/","v"); print $1 }')"
       last_released_tag="$(snap info celestia-daily | awk '$1 == "beta:" { print $2 }')"
       #If the latest tag from the upstream project has not been released to
       #beta, build that tag instead of master.
       if [ "${last_committed_tag}" != "${last_released_tag}" ]; then
-        git fetch
-        git checkout "${last_committed_tag}"
-        snapcraftctl set-version "${last_committed_tag} | awk '{ gsub("refs/tags/","v"); print $1 }'"
-      fi    
-    
+        git clone -b "${last_committed_tag}" --depth 1 https://github.com/Stellarium/stellarium.git $SNAPCRAFT_PART_SRC
+        snapcraftctl set-version "${tag_version}"
+      else
+        craftctl default
+      fi
+
     override-build: |
       snapcraftctl build
       #mkdir -p $SNAPCRAFT_PART_INSTALL/usr/share/applications
