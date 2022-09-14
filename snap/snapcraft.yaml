@@ -53,7 +53,7 @@ parts:
       #If the latest tag from the upstream project has not been released to
       #beta, build that tag instead of master.
       if [ "${last_committed_tag}" != "${last_released_tag}" ]; then
-        git clone -b "${last_committed_tag}" --depth 1 https://github.com/Stellarium/stellarium.git $SNAPCRAFT_PART_SRC
+        git clone -b "${last_committed_tag}" --depth 1 https://github.com/CelestiaProject/Celestia.git $SNAPCRAFT_PART_SRC
         snapcraftctl set-version "${tag_version}"
       else
         craftctl default
