@@ -82,6 +82,7 @@ parts:
       - libtheora0
       - libcanberra-gtk3-module
       - gtk3-nocsd
+      - qtwayland5
 
   wrapper:
     plugin: dump
