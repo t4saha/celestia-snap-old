@@ -40,8 +40,6 @@ parts:
     source-type: git
     #source-depth : 1
     #source-tag: 1.6.2
-    
-
     after : [desktop-celestia]
     
     override-pull: |  
@@ -95,7 +93,16 @@ parts:
     organize:
       run-celestia-qt.sh: bin/run-celestia-qt.sh
       
-      
+  celestia-content:
+    source: https://github.com/CelestiaProject/CelestiaContent.git
+    source-type: git
+    source-depth : 1
+    after : [desktop-celestia, celestia-qt]
+    plugin: cmake
+    configflags:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX:PATH=/usr
+    
   desktop-celestia:
     source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
     source-subdir: qt
