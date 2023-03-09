@@ -76,6 +76,9 @@ parts:
       - libqt6opengl6
       - libqt6core5compat6
       - qt6-wayland
+      - libqt6openglwidgets6
+      - libfmt8
+      - libluajit-5.1-2
       - libtheora0
       - libcanberra-gtk3-module
       - gtk3-nocsd
