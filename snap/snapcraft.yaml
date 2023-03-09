@@ -26,6 +26,8 @@ layout:
     bind: $SNAP/usr/share/X11
   /usr/share/celestia:
     bind: $SNAP/usr/share/celestia
+  /usr/lib:
+    bind: $SNAP/usr/lib
 
 parts:
   celestia-qt:
