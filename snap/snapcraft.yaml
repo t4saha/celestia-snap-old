@@ -129,3 +129,4 @@ parts:
       - libglib2.0-0
       - libglib2.0-data
       - gsettings-desktop-schemas
+      - gettext
