@@ -89,7 +89,7 @@ parts:
     source-depth : 1
     after : [desktop-celestia, celestia-qt]
     plugin: cmake
-    configflags:
+    cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_PREFIX:PATH=/usr
     
