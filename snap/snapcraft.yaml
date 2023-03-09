@@ -63,7 +63,9 @@ parts:
       - libqt6opengl6-dev
       - libqt6core5compat6-dev
       - liblua5.3-dev
-      - libfreetype6-dev      
+      - libluajit-5.1-dev
+      - libfreetype6-dev
+      - gettext
     stage-packages:
       - libepoxy0
       - libgl1
@@ -131,4 +133,3 @@ parts:
       - libglib2.0-0
       - libglib2.0-data
       - gsettings-desktop-schemas
-      - gettext
