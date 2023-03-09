@@ -40,8 +40,10 @@ parts:
     source-type: git
     after : [desktop-celestia]  
     override-pull: |  
-      snapcraftctl set-version "$(git describe --tags | awk '{ gsub("_","."); print $1 }')"
+      craftctl default
+      craftctl set version=$(git describe --tags | awk '{ gsub("_","."); print $1 }')
     override-build: |    
+      craftctl default
       mkdir -p $CRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
       cp ../src/src/celestia/qt/data/celestia.png $CRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps    
     build-packages:
