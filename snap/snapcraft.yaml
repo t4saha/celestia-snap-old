@@ -30,7 +30,7 @@ layout:
 parts:
   celestia-qt:
     plugin: cmake
-    configflags:
+    cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_PREFIX:PATH=/usr
       - -DENABLE_TTF=ON
