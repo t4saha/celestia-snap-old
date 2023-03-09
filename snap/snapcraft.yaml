@@ -59,6 +59,7 @@ parts:
       - qt6-base-dev
       - qt6-base-dev-tools
       - libqt6opengl6-dev
+      - libqt6core5compat6-dev
       - liblua5.3-dev
       - libfreetype6-dev      
     stage-packages:
@@ -69,6 +70,7 @@ parts:
       - liblua5.3-0
       - libogg0
       - libqt6opengl6
+      - libqt6core5compat6
       - qt6-wayland
       - libtheora0
       - libcanberra-gtk3-module
