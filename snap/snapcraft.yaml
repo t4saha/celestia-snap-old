@@ -1,20 +1,15 @@
 name: celestia-daily # you probably want to 'snapcraft register <name>'
 base: core22 # the base snap is the execution environment for this snap
-#version: '0.+git' # just for humans, typically '1.2+git' or '1.3.2'
 adopt-info: celestia-qt
-
 summary: Free, open source, Real-time 3D visualization of space. # 79 char long summary
 description: |
   Celestia is a real-time space simulation which lets you experience the universe in three dimensions. Celestia does not confine you to the surface of the Earth, it allows you to travel throughout the solar system, to any of over 100,000 stars, or even beyond the galaxy. Travel in Celestia is seamless; the exponential zoom feature lets you explore space across a huge range of scales, from galaxy clusters down to spacecraft only a few meters across. A 'point-and-goto' interface makes it simple to navigate through the universe to the object you want to visit.
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
-
 architectures: #build Architectures
    - build-on: amd64 
-   #- build-on: i386 #not supported by core 20 and above
    - build-on: arm64
-
 # this line enables LZO compression for the snap
 compression: lzo
    
@@ -23,45 +18,32 @@ apps:
     command: desktop-launch $SNAP/bin/run-celestia-qt.sh
     #desktop: $SNAP/usr/share/applications/celestia.desktop
     plugs: [desktop, wayland, x11, unity7, gsettings, opengl, network, network-bind, audio-playback, home, raw-usb]
-    environment:
-      HOME: "$SNAP_USER_COMMON"
-    
+
 layout:
-  /usr/share/celestia:
-    bind: $SNAP/usr/share/celestia
   /usr/share/qt6:
     bind: $SNAP/usr/share/qt6
   /usr/share/X11:
     bind: $SNAP/usr/share/X11
-  #/usr/lib:
-    #bind: $SNAP/usr/lib
-    
+  /usr/share/celestia:
+    bind: $SNAP/usr/share/celestia
+
 parts:
   celestia-qt:
     plugin: cmake
     configflags:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_PREFIX:PATH=/usr
-      #- -DWITH_GTK_2_X = ON
       - -DENABLE_TTF=ON
       - -DUSE_QT6=ON
       - -DENABLE_DATA=ON
-
     source: https://github.com/CelestiaProject/Celestia.git
     source-type: git
-    #source-depth : 1
-    #source-tag: 1.6.2
-    after : [desktop-celestia]
-    
+    after : [desktop-celestia]  
     override-pull: |  
-      craftctl default
       snapcraftctl set-version "$(git describe --tags | awk '{ gsub("_","."); print $1 }')"
-
     override-build: |    
-      craftctl default
       mkdir -p $CRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
-      cp ../src/src/celestia/qt/data/celestia.png $CRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps
-    
+      cp ../src/src/celestia/qt/data/celestia.png $CRAFT_PART_INSTALL/usr/share/icons/hicolor/128x128/apps    
     build-packages:
       - git
       - libepoxy-dev
@@ -76,8 +58,7 @@ parts:
       - qt6-base-dev-tools
       - libqt6opengl6-dev
       - liblua5.3-dev
-      - libfreetype6-dev
-      
+      - libfreetype6-dev      
     stage-packages:
       - libepoxy0
       - libgl1
@@ -113,25 +94,22 @@ parts:
       - -DCMAKE_INSTALL_PREFIX:PATH=/usr
     
   desktop-celestia:
-    #source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    https://github.com/t4saha/snapcraft-desktop-helpers-Qt6.git
+    source: https://github.com/t4saha/snapcraft-desktop-helpers-Qt6.git
     source-subdir: qt
     source-depth : 1
     plugin: make
     make-parameters: ["FLAVOR=qt6"]
     build-packages:
       - build-essential
-      #- qtbase5-dev
       - qt6-base-dev
       - dpkg-dev
+      - software-properties-common
     stage-packages:
       - libxkbcommon0
       - xkb-data
-      - ttf-ubuntu-font-family
+      - fonts-ubuntu
       - dmz-cursor-theme
-      - light-themes
       - adwaita-icon-theme
-      - gnome-themes-standard
       - shared-mime-info
       - libqt6gui6
       - libgdk-pixbuf2.0-0
