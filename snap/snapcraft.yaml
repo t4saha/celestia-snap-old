@@ -15,7 +15,7 @@ compression: lzo
    
 apps:
   celestia-qt:
-    command: desktop-launch $SNAP/bin/run-celestia-qt.sh
+    command: bin/desktop-launch $SNAP/bin/run-celestia-qt.sh
     #desktop: $SNAP/usr/share/applications/celestia.desktop
     plugs: [desktop, wayland, x11, unity7, gsettings, opengl, network, network-bind, audio-playback, home, raw-usb]
 
