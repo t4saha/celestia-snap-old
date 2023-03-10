@@ -4,6 +4,7 @@ adopt-info: celestia-qt
 summary: Free, open source, Real-time 3D visualization of space. # 79 char long summary
 description: |
   Celestia is a real-time space simulation which lets you experience the universe in three dimensions. Celestia does not confine you to the surface of the Earth, it allows you to travel throughout the solar system, to any of over 100,000 stars, or even beyond the galaxy. Travel in Celestia is seamless; the exponential zoom feature lets you explore space across a huge range of scales, from galaxy clusters down to spacecraft only a few meters across. A 'point-and-goto' interface makes it simple to navigate through the universe to the object you want to visit.
+
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 architectures: #build Architectures
@@ -11,7 +12,7 @@ architectures: #build Architectures
    - build-on: arm64
 # this line enables LZO compression for the snap
 compression: lzo
-
+   
 apps:
   celestia-qt:
     command: bin/desktop-launch $SNAP/bin/run-celestia-qt.sh
@@ -27,7 +28,7 @@ layout:
     bind: $SNAP/usr/share/celestia
   /usr/lib:
     bind: $SNAP/usr/lib
-    
+
 parts:
   celestia-qt:
     plugin: cmake
@@ -65,9 +66,6 @@ parts:
       - libluajit-5.1-dev
       - libfreetype6-dev
       - gettext
-      - libxcb-xkb-dev
-      - libxkbcommon-dev
-      - libxkbcommon-x11-dev
     stage-packages:
       - libepoxy0
       - libgl1
@@ -84,6 +82,7 @@ parts:
       - libtheora0
       - libcanberra-gtk3-module
       - gtk3-nocsd
+
   wrapper:
     plugin: dump
     after : [celestia-qt]
