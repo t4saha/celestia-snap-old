@@ -19,7 +19,7 @@ apps:
     #desktop: $SNAP/usr/share/applications/celestia.desktop
     plugs: [desktop, wayland, x11, unity7, gsettings, opengl, network, network-bind, audio-playback, home, raw-usb]
     environment:
-      QT_QPA_PLATFORMTHEME: qt6ct # gtk3 is very slow and buggy
+      QT_QPA_PLATFORMTHEME: xcb # gtk3 is very slow and buggy
 
 layout:
   /usr/share/qt6:
@@ -103,28 +103,6 @@ parts:
     cmake-parameters:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_PREFIX:PATH=/usr
-      
-  qt6ct:
-    source: https://github.com/trialuser02/qt6ct.git
-    source-type: git
-    source-depth : 1
-    after : [desktop-celestia]
-    plugin: cmake
-    cmake-parameters:
-      - -DCMAKE_INSTALL_PREFIX:PATH=/usr
-    build-packages:
-      - build-essential
-      - qt6-base-dev
-      - dpkg-dev
-      - software-properties-common
-      - qt6-base-dev
-      - libqt6svg6
-      - qt6-tools-dev
-      - qt6-l10n-tools
-      - qt6-tools-dev-tools
-      - libqt6widgets6
-      - libqt6gui6
-      - qt6-base-private-dev
     
   desktop-celestia:
     source: https://github.com/t4saha/snapcraft-desktop-helpers-Qt6.git
